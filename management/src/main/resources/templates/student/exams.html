@@ -1,0 +1,38 @@
+<table class="table table-bordered">
+
+<thead>
+
+<tr>
+
+<th>Exam</th>
+<th>Class</th>
+<th>Section</th>
+<th>Subject</th>
+<th>Date</th>
+<th>Time</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr th:each="e : ${exams}">
+
+<td th:text="${e.examName}"></td>
+
+<td th:text="${e.className}"></td>
+
+<td th:text="${e.section}"></td>
+
+<td th:text="${e.subject}"></td>
+
+<td th:text="${e.examDate}"></td>
+
+<td th:text="${e.startTime + ' - ' + e.endTime}"></td>
+
+</tr>
+
+</tbody>
+
+</table>

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <title>Student Dashboard</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <link rel="stylesheet" th:href="@{/css/dashboard.css}">
+
+</head>
+
+<body>
+
+<div class="sidebar">
+
+    <div class="logo">
+        Student Panel
+    </div>
+
+    <ul>
+
+        <li><a href="/student/dashboard">Dashboard</a></li>
+        <li><a href="/student/attendance">Attendance</a></li>
+        <li><a href="/student/result">Results</a></li>
+        <li><a href="/student/fees">Fees</a></li>
+        <li><a href="/student/timetable">Timetable</a></li>
+
+    </ul>
+
+</div>
+
+<div class="main-content">
+
+    <div class="topbar">
+
+        <h2>Student Dashboard</h2>
+
+		<button class="btn btn-success">
+		          <span th:text="${studentName}"></span>
+		      </button>
+		<a href="/"
+				   class="btn btn-danger">
+
+				   Logout
+
+				</a>
+
+
+    </div>
+
+	<div class="card shadow mb-4">
+
+	    <div class="card-body">
+
+	        <h5>Latest Notice</h5>
+
+	        <p th:text="${latestNotice}">
+	            No Notice Available
+	        </p>
+
+	    </div>
+
+	</div>
+	<div class="row mt-4">
+
+	    <div class="col-md-3">
+
+	        <div class="card shadow">
+
+	            <div class="card-body text-center">
+
+	                <h5>Attendance</h5>
+
+	                <a href="/student/attendance"
+	                   class="btn btn-primary">
+
+	                    Open
+
+	                </a>
+
+	            </div>
+
+	        </div>
+
+	    </div>
+
+	    <div class="col-md-3">
+
+	        <div class="card shadow">
+
+	            <div class="card-body text-center">
+
+	                <h5>Results</h5>
+
+	                <a href="/student/result"
+	                   class="btn btn-success">
+
+	                    Open
+
+	                </a>
+
+	            </div>
+
+	        </div>
+
+	    </div>
+
+	    <div class="col-md-3">
+
+	        <div class="card shadow">
+
+	            <div class="card-body text-center">
+
+	                <h5>Fees</h5>
+
+	                <a href="/student/fees"
+	                   class="btn btn-warning">
+
+	                    Open
+
+	                </a>
+
+	            </div>
+
+	        </div>
+
+	    </div>
+
+	    <div class="col-md-3">
+
+	        <div class="card shadow">
+
+	            <div class="card-body text-center">
+
+	                <h5>Timetable</h5>
+
+	                <a href="/student/timetable"
+	                   class="btn btn-info">
+
+	                    Open
+
+	                </a>
+
+	            </div>
+
+	        </div>
+
+	    </div>
+
+	</div>
+
+</div>
+
+</body>
+</html>

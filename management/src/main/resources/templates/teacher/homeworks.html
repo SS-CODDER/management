@@ -1,0 +1,41 @@
+<table class="table table-bordered">
+
+<thead>
+
+<tr>
+
+<th>Title</th>
+<th>Class</th>
+<th>Section</th>
+<th>Subject</th>
+<th>Due Date</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr
+th:each="h : ${homeworks}">
+
+<td th:text="${h.title}">
+</td>
+
+<td th:text="${h.className}">
+</td>
+
+<td th:text="${h.section}">
+</td>
+
+<td th:text="${h.subject}">
+</td>
+
+<td th:text="${h.dueDate}">
+</td>
+
+</tr>
+
+</tbody>
+
+</table>

@@ -1,0 +1,56 @@
+body{
+    margin:0;
+    padding:0;
+    font-family:Arial;
+    background:linear-gradient(135deg,#4f46e5,#06b6d4);
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.login-card{
+    background:white;
+    padding:50px;
+    border-radius:20px;
+    width:400px;
+    text-align:center;
+    box-shadow:0 10px 40px rgba(0,0,0,0.3);
+}
+
+.login-card h1{
+    margin-bottom:10px;
+}
+
+.role-buttons{
+    margin-top:30px;
+    display:flex;
+    flex-direction:column;
+    gap:20px;
+}
+
+.role-btn{
+    text-decoration:none;
+    padding:15px;
+    border-radius:10px;
+    color:white;
+    font-size:18px;
+    font-weight:bold;
+    transition:0.3s;
+}
+
+.role-btn:hover{
+    transform:scale(1.05);
+}
+
+.admin-btn{
+    background:#1e293b;
+}
+
+.teacher-btn{
+    background:#16a34a;
+}
+
+.student-btn{
+    background:#7c3aed;
+}

@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <title>Admin Dashboard</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <link rel="stylesheet" th:href="@{/css/dashboard.css}">
+
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+
+<div th:replace=
+"fragments/sidebar :: sidebar">
+</div>
+<!-- MAIN -->
+
+<div class="main-content">
+
+    <!-- TOPBAR -->
+
+	<div th:replace=
+	"fragments/header :: header('Admin Dashboard')">
+	</div>
+
+    <!-- CARDS -->
+
+    <div class="row cards g-4">
+
+      
+		<div class="col-md-3">
+
+		            <div class="dashboard-card">
+		<a href="/admin/classes"
+		   class="btn btn-primary">
+
+		    Manage Classes
+
+		</a>
+		
+		</div>
+
+		       </div>
+
+			   <div class="col-md-3">
+
+			   		            <div class="dashboard-card">
+		<a href="/admin/sections"
+		   class="btn btn-success">
+
+		    Manage Sections
+
+		</a>
+		</div>
+
+		     </div>
+		
+		<div class="col-md-3">
+
+				            <div class="dashboard-card">
+		<a href="/admin/subjects"
+		   class="btn btn-warning">
+
+		    Manage Subjects
+
+		</a>
+		</div>
+
+		     </div>
+		<div class="col-md-3">
+
+				            <div class="dashboard-card">
+		<a href="/admin/assign-teacher"
+		   class="btn btn-info">
+
+		    Assign Teacher
+
+		</a>
+		</div>
+
+		     </div>
+			 
+			 <div class="col-md-3">
+
+			           <div class="dashboard-card">
+
+						<h2 th:text="${totalStudents}">
+					
+						</h2>
+
+			               <p>Total Students</p>
+
+			           </div>
+
+			       </div>
+        <div class="col-md-3">
+
+            <div class="dashboard-card">
+
+				<h2 th:text="${totalTeachers}">
+				</h2>
+
+                <p>Total Teachers</p>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="dashboard-card">
+
+				<h2 th:text="${totalClasses}">
+				</h2>
+
+                <p>Classes</p>
+
+            </div>
+
+        </div>
+		<div class="col-md-3">
+
+		           <div class="dashboard-card">
+
+					<h2 th:text="${totalSubjects}">
+					</h2>
+
+		               <p>Subjects</p>
+
+		           </div>
+
+		       </div>
+			   <div class="col-md-3">
+
+			   	           <div class="dashboard-card">
+
+			   				<h2 th:text="${totalSections}">
+			   				</h2>
+
+			   	               <p>Sections</p>
+
+			   	           </div>
+
+			   	       </div>
+					   
+					   <div class="col-md-3">
+
+					   			   	           <div class="dashboard-card">
+
+					   			   				<h2 th:text="${totalExams}">
+					   			   				</h2>
+
+					   			   	               <p>Total Exams</p>
+
+					   			   	           </div>
+
+					   			   	       </div>
+										   
+										   
+					   
+					  
+
+
+        <div class="col-md-3">
+
+            <div class="dashboard-card">
+
+				<h2 th:text="${totalCollection}">
+				0
+				</h2>
+
+                <p>Fees Collection</p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- TABLE -->
+
+<!--    <div class="custom-table">-->
+
+<!--        <h3 class="mb-4">Recent Students</h3>-->
+
+<!--        <table class="table">-->
+
+<!--            <thead>-->
+
+<!--            <tr>-->
+
+<!--                <th>ID</th>-->
+<!--                <th>Name</th>-->
+<!--                <th>Class</th>-->
+<!--                <th>Status</th>-->
+
+<!--            </tr>-->
+
+<!--            </thead>-->
+
+<!--            <tbody>-->
+
+<!--            <tr>-->
+
+<!--                <td>1</td>-->
+<!--                <td>Rahul</td>-->
+<!--                <td>10th</td>-->
+<!--                <td>Active</td>-->
+
+<!--            </tr>-->
+
+<!--            <tr>-->
+
+<!--                <td>2</td>-->
+<!--                <td>Anjali</td>-->
+<!--                <td>9th</td>-->
+<!--                <td>Active</td>-->
+
+<!--            </tr>-->
+
+<!--            </tbody>-->
+
+<!--        </table>-->
+
+<!--    </div>-->
+	
+
+</div>
+<div th:replace=
+	"fragments/footer :: footer">
+	</div>
+
+</body>
+</html>

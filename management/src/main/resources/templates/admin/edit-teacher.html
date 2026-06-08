@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+<meta charset="UTF-8">
+
+<title>Edit Teacher</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet">
+
+</head>
+
+<body>
+
+<div class="container mt-5">
+
+    <div class="card shadow">
+
+        <div class="card-header bg-warning">
+
+            <h3>Edit Teacher</h3>
+
+        </div>
+
+        <div class="card-body">
+
+			<form th:action="@{/admin/update-teacher}"
+			      th:object="${teacher}"
+			      method="post">
+
+			    <input type="hidden" th:field="*{id}">
+			    <input type="hidden" th:field="*{user.id}">
+                <div class="row">
+
+                    <div class="col-md-6">
+
+                        <label>Name</label>
+
+                        <input type="text"
+                               th:field="*{teacherName}"
+                               class="form-control">
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <label>Email</label>
+
+                        <input type="email"
+                               th:field="*{email}"
+                               class="form-control">
+
+                    </div>
+
+                </div>
+
+                <br>
+
+                <div class="row">
+
+                    <div class="col-md-6">
+
+                        <label>Phone</label>
+
+                        <input type="text"
+                               th:field="*{phone}"
+                               class="form-control">
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <label>Subject</label>
+
+                        <input type="text"
+                               th:field="*{subject}"
+                               class="form-control">
+
+                    </div>
+
+                </div>
+
+                <br>
+
+                <div class="row">
+
+                    <div class="col-md-6">
+
+                        <label>Assigned Class</label>
+
+                        <select th:field="*{assignedClass}"
+                                class="form-control">
+
+                            <option value="6th">6th</option>
+                            <option value="7th">7th</option>
+                            <option value="8th">8th</option>
+                            <option value="9th">9th</option>
+                            <option value="10th">10th</option>
+
+                        </select>
+
+                    </div>
+
+                    <div class="col-md-6">
+
+                        <label>Assigned Section</label>
+
+                        <select th:field="*{assignedSection}"
+                                class="form-control">
+
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+                <br>
+
+                <button class="btn btn-success">
+
+                    Update Teacher
+
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

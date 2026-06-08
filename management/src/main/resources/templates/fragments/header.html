@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<body>
+
+<div th:fragment="header(title)">
+
+    <div class="topbar">
+
+        <h2 th:text="${title}">
+            Dashboard
+        </h2>
+
+        <div>
+
+            <a href="/admin/dashboard"
+               class="btn btn-primary">
+
+                Home
+
+            </a>
+
+            <a href="/"
+               class="btn btn-danger">
+
+                Logout
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

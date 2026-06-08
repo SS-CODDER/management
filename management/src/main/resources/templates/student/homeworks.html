@@ -1,0 +1,40 @@
+<table class="table table-striped">
+
+<thead>
+
+<tr>
+
+<th>Title</th>
+
+<th>Subject</th>
+
+<th>Description</th>
+
+<th>Due Date</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr
+th:each="h : ${homeworks}">
+
+<td th:text="${h.title}">
+</td>
+
+<td th:text="${h.subject}">
+</td>
+
+<td th:text="${h.description}">
+</td>
+
+<td th:text="${h.dueDate}">
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
