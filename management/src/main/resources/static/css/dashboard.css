@@ -91,6 +91,26 @@ body{
     margin-bottom:10px;
 }
 
+.stat-card{
+    border-radius:20px;
+    transition:.3s;
+    box-shadow:0 5px 15px rgba(0,0,0,.1);
+}
+
+.stat-card:hover{
+    transform:translateY(-5px);
+}
+
+.stat-number{
+    font-size:40px;
+    font-weight:bold;
+}
+
+.stat-title{
+    color:#666;
+}
+
+
 /* TABLE */
 
 .custom-table{

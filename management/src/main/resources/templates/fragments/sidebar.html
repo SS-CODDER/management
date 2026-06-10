@@ -13,17 +13,17 @@
 
 		<ul>
 
-		    <li><a href="/admin/dashboard">Dashboard</a></li>
+		    <li class="bi bi-speedometer2"><a th:href="@{/admin/dashboard}">Dashboard</a></li>
 
 		    <!-- Students -->
 		    <li class="menu-item">
 		        <a href="#">Students ▼</a>
 
 		        <ul class="submenu">
-		            <li><a href="/admin/students">All Students</a></li>
-		            <li><a href="/admin/student-registration">Add Student</a></li>
-		            <li><a href="/admin/attendance">Attendance</a></li>
-		            <li><a href="/admin/results">Results</a></li>
+		            <li><a th:href="@{/admin/students}">All Students</a></li>
+		            <li><a th:href="@{/admin/student-registration}">Add Student</a></li>
+		            <li><a th:href="@{/admin/attendance}">Attendance</a></li>
+		            <li><a th:href="@{/admin/results}">Results</a></li>
 		        </ul>
 		    </li>
 
@@ -32,8 +32,8 @@
 		        <a href="#">Teachers ▼</a>
 
 		        <ul class="submenu">
-		            <li><a href="/admin/teachers">All Teachers</a></li>
-		            <li><a href="/admin/assign-teacher">Assign Teacher</a></li>
+		            <li><a th:href="@{/admin/teachers}">All Teachers</a></li>
+		            <li><a th:href="@{/admin/assign-teacher}">Assign Teacher</a></li>
 		        </ul>
 		    </li>
 
@@ -42,9 +42,9 @@
 		        <a href="#">Academic ▼</a>
 
 		        <ul class="submenu">
-		            <li><a href="/admin/classes">Classes</a></li>
-		            <li><a href="/admin/sections">Sections</a></li>
-		            <li><a href="/admin/subjects">Subjects</a></li>
+		            <li><a th:href="@{/admin/classes}">Classes</a></li>
+		            <li><a th:href="@{/admin/sections}">Sections</a></li>
+		            <li><a th:href="@{/admin/subjects}">Subjects</a></li>
 		        </ul>
 		    </li>
 
@@ -53,13 +53,13 @@
 		        <a href="#">Fees ▼</a>
 
 		        <ul class="submenu">
-		            <li><a href="/admin/fees">Collect Fees</a></li>
-		            <li><a href="/admin/fee-report">Fee Reports</a></li>
+		            <li><a th:href="@{/admin/fees}">Collect Fees</a></li>
+		            <li><a th:href="@{/admin/fee-report}">Fee Reports</a></li>
 		        </ul>
 		    </li>
 
-		    <li><a href="/admin/add-timetable">Timetable</a></li>
-		    <li><a href="/admin/add-notice">Notice</a></li>
+		    <li><a th:href="@{/admin/add-timetable}">Timetable</a></li>
+		    <li><a th:href="@{/admin/add-notice}">Notice</a></li>
 
 		</ul>
 
