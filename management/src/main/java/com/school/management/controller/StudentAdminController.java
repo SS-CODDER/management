@@ -13,6 +13,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.school.management.entity.Student;
 import com.school.management.entity.User;
 import com.school.management.repository.UserRepository;
+import com.school.management.service.ActivityLogService;
 import com.school.management.service.StudentService;
 
 @Controller
@@ -26,6 +27,9 @@ public class StudentAdminController {
 
 	@Autowired
 	private PasswordEncoder passwordEncoder;
+	
+	@Autowired
+	private ActivityLogService activityLogService;
 
 	// SHOW STUDENTS
 
@@ -92,6 +96,7 @@ public class StudentAdminController {
 		student.setUser(user);
 
 		studentService.saveStudent(student);
+		activityLogService.saveLog("New Student Added", "Admin");
 
 		ra.addFlashAttribute("success", "Student Added Successfully");
 

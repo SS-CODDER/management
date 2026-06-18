@@ -53,4 +53,16 @@ public class ResultService {
 
 		return percentage >= 40 ? "PASS" : "FAIL";
 	}
+	
+	public List<Result> getAllResults() {
+	    return repository.findAll();
+	}
+
+	public Result getById(Long id) {
+	    return repository.findById(id).orElse(null);
+	}
+
+	public void delete(Long id) {
+	    repository.deleteById(id);
+	}
 }

@@ -2,6 +2,7 @@ package com.school.management.service;
 
 import java.util.List;
 
+import org.jspecify.annotations.Nullable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -94,5 +95,20 @@ public class StudentService {
 
 	public boolean existsByPhone(String phone) {
 		return repository.existsByPhone(phone);
+	}
+
+	public Long countStudentsByMonth(int month) {
+
+		return repository.countByMonth(month);
+	}
+
+	public List<Student> recentStudents() {
+
+		return repository.findTop5ByOrderByIdDesc();
+	}
+
+	public long countStudents() {
+		// TODO Auto-generated method stub
+		return repository.findAll().size();
 	}
 }

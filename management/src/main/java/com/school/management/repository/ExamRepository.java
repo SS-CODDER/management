@@ -12,4 +12,6 @@ public interface ExamRepository extends JpaRepository<Exam, Long> {
 
 	boolean existsByExamNameAndClassNameAndSectionAndSubject(String examName, String className, String section,
 			String subject);
+
+	List<Exam> findTop5ByExamDateGreaterThanEqualOrderByExamDateAsc(String date);
 }

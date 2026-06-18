@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<title>Contact Messages</title>
+
+<link rel="stylesheet"
+th:href="@{/css/bootstrap.min.css}">
+
+</head>
+
+<body>
+
+<div class="container mt-4">
+
+<h2>Contact Messages</h2>
+
+<table
+class="table table-bordered">
+
+<thead>
+
+	<tr>
+
+	<th>Name</th>
+	<th>Email</th>
+	<th>Phone</th>
+	<th>Message</th>
+	<th>Status</th>
+	<th>Date</th>
+	<th>Action</th>
+
+	</tr>
+
+</thead>
+
+<tbody>
+
+<tr
+th:each="m : ${messages}">
+
+<td th:text="${m.name}"></td>
+
+<td th:text="${m.email}"></td>
+
+<td th:text="${m.phone}"></td>
+
+<td th:text="${m.message}"></td>
+
+<td th:text="${m.createdAt}"></td>
+
+<td>
+
+<span th:if="${m.readStatus}"
+      class="badge bg-success">
+
+Read
+
+</span>
+
+<span th:unless="${m.readStatus}"
+      class="badge bg-danger">
+
+Unread
+
+</span>
+
+</td>
+<td>
+
+<a th:href="@{/admin/message/read/{id}(id=${m.id})}"
+   class="btn btn-success btn-sm">
+
+Read
+
+</a>
+
+<a th:href="@{/admin/message/delete/{id}(id=${m.id})}"
+   class="btn btn-danger btn-sm"
+   onclick="return confirm('Delete message?')">
+
+Delete
+
+</a>
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</body>
+
+</html>

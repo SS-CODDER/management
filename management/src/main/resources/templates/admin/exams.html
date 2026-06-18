@@ -1,38 +1,332 @@
-<table class="table table-bordered">
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
 
-<thead>
+<head>
 
-<tr>
+    <title>Exam Management</title>
 
-<th>Exam</th>
-<th>Class</th>
-<th>Section</th>
-<th>Subject</th>
-<th>Date</th>
-<th>Time</th>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1">
 
-</tr>
+    <link rel="stylesheet"
+          th:href="@{/css/bootstrap.min.css}">
 
-</thead>
+    <link rel="stylesheet"
+          th:href="@{/css/dashboard.css}">
 
-<tbody>
+</head>
 
-<tr th:each="e : ${exams}">
+<body>
 
-<td th:text="${e.examName}"></td>
+<div class="container-fluid py-4">
 
-<td th:text="${e.className}"></td>
+    <!-- Header -->
 
-<td th:text="${e.section}"></td>
+    <div class="card shadow border-0 mb-4">
 
-<td th:text="${e.subject}"></td>
+        <div class="card-body d-flex
+                    justify-content-between
+                    align-items-center">
 
-<td th:text="${e.examDate}"></td>
+            <div>
 
-<td th:text="${e.startTime + ' - ' + e.endTime}"></td>
+                <h2 class="fw-bold">
 
-</tr>
+                    📝 Exam Management
 
-</tbody>
+                </h2>
 
-</table>
+                <p class="text-muted mb-0">
+
+                    Manage all school examinations
+
+                </p>
+
+            </div>
+
+            <div>
+
+                <a href="/admin/dashboard"
+                   class="btn btn-secondary">
+
+                    Dashboard
+
+                </a>
+
+                <a href="/admin/add-exam"
+                   class="btn btn-primary">
+
+                    + Schedule Exam
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Dashboard Cards -->
+
+    <div class="row mb-4">
+
+        <div class="col-md-3">
+
+            <div class="card bg-primary text-white shadow">
+
+                <div class="card-body text-center">
+
+                    <h2 th:text="${#lists.size(exams)}">
+
+                        0
+
+                    </h2>
+
+                    <p>Total Exams</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="card bg-success text-white shadow">
+
+                <div class="card-body text-center">
+
+                    <h2 th:text="${#lists.size(exams)}">
+
+                        0
+
+                    </h2>
+
+                    <p>Scheduled Exams</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="card bg-warning shadow">
+
+                <div class="card-body text-center">
+
+                    <h2>2025</h2>
+
+                    <p>Current Session</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="card bg-info text-white shadow">
+
+                <div class="card-body text-center">
+
+                    <h2>Active</h2>
+
+                    <p>Exam Status</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Search -->
+
+    <div class="card shadow border-0 mb-4">
+
+        <div class="card-body">
+
+            <input type="text"
+                   id="examSearch"
+                   class="form-control"
+                   placeholder="Search Exam...">
+
+        </div>
+
+    </div>
+
+    <!-- Exam Table -->
+
+    <div class="card shadow border-0">
+
+        <div class="card-body">
+
+            <div class="table-responsive">
+
+                <table
+                class="table table-hover align-middle"
+                id="examTable">
+
+                    <thead class="table-dark">
+
+                    <tr>
+
+                        <th>Exam</th>
+                        <th>Class</th>
+                        <th>Section</th>
+                        <th>Subject</th>
+                        <th>Date</th>
+                        <th>Time</th>
+                        <th>Room</th>
+                        <th>Marks</th>
+                        <th>Status</th>
+                        <th>Action</th>
+
+                    </tr>
+
+                    </thead>
+
+                    <tbody>
+
+                    <tr th:each="e : ${exams}">
+
+                        <td>
+
+                            <strong
+                            th:text="${e.examName}">
+                            </strong>
+
+                        </td>
+
+                        <td>
+
+                            <span
+                            class="badge bg-primary"
+                            th:text="${e.className}">
+                            </span>
+
+                        </td>
+
+                        <td th:text="${e.section}"></td>
+
+                        <td th:text="${e.subject}"></td>
+
+                        <td th:text="${e.examDate}"></td>
+
+                        <td>
+
+                            <span
+                            th:text="${e.startTime}">
+                            </span>
+
+                            -
+
+                            <span
+                            th:text="${e.endTime}">
+                            </span>
+
+                        </td>
+
+                        <td th:text="${e.roomNo}"></td>
+
+                        <td>
+
+                            <span
+                            th:text="${e.passMarks}">
+                            </span>
+
+                            /
+
+                            <span
+                            th:text="${e.maxMarks}">
+                            </span>
+
+                        </td>
+
+                        <td>
+
+                            <span
+                            class="badge bg-success">
+
+                                Scheduled
+
+                            </span>
+
+                        </td>
+
+                        <td>
+
+                            <a href="#"
+                               class="btn btn-warning btn-sm">
+
+                                Edit
+
+                            </a>
+
+                            <a href="#"
+                               class="btn btn-danger btn-sm">
+
+                                Delete
+
+                            </a>
+
+                        </td>
+
+                    </tr>
+
+                    </tbody>
+
+                </table>
+
+                <div th:if="${#lists.isEmpty(exams)}"
+                     class="text-center p-5">
+
+                    <h4>No Exams Scheduled</h4>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+document
+.getElementById("examSearch")
+.addEventListener("keyup", function(){
+
+let value =
+this.value.toLowerCase();
+
+let rows =
+document.querySelectorAll(
+"#examTable tbody tr"
+);
+
+rows.forEach(row=>{
+
+row.style.display =
+row.innerText.toLowerCase()
+.includes(value)
+
+? ""
+
+: "none";
+
+});
+
+});
+
+</script>
+
+</body>
+</html>

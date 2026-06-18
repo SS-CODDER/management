@@ -13,6 +13,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.school.management.entity.Teacher;
 import com.school.management.entity.User;
 import com.school.management.repository.UserRepository;
+import com.school.management.service.ActivityLogService;
 import com.school.management.service.ClassRoomService;
 import com.school.management.service.SectionService;
 import com.school.management.service.SubjectService;
@@ -20,10 +21,10 @@ import com.school.management.service.TeacherService;
 
 @Controller
 public class TeacherAdminController {
-	
+
 	@Autowired
 	private TeacherService teacherService;
-	
+
 	@Autowired
 	private ClassRoomService classRoomService;
 
@@ -39,7 +40,8 @@ public class TeacherAdminController {
 	@Autowired
 	private PasswordEncoder passwordEncoder;
 
-	
+	@Autowired
+	private ActivityLogService activityLogService;
 
 	@GetMapping("/admin/teachers")
 	public String teachers(Model model) {
@@ -93,6 +95,8 @@ public class TeacherAdminController {
 		teacher.setUser(user);
 
 		teacherService.saveTeacher(teacher);
+
+		activityLogService.saveLog("New Teacher Added", "Admin");
 
 		ra.addFlashAttribute("success", "Teacher Added Successfully");
 

@@ -8,25 +8,30 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.school.management.dto.DashboardDTO;
 import com.school.management.entity.Attendance;
 import com.school.management.entity.ClassRoom;
-import com.school.management.entity.Homework;
 import com.school.management.entity.Section;
 import com.school.management.entity.Subject;
 import com.school.management.entity.Teacher;
 import com.school.management.entity.TeacherAssignment;
 import com.school.management.entity.Timetable;
 import com.school.management.repository.TeacherAssignmentRepository;
+import com.school.management.service.ActivityLogService;
 import com.school.management.service.AttendanceService;
 import com.school.management.service.ClassRoomService;
+import com.school.management.service.ContactMessageService;
+import com.school.management.service.DashboardService;
 import com.school.management.service.ExamService;
 import com.school.management.service.FeeService;
+import com.school.management.service.HolidayService;
 import com.school.management.service.HomeworkService;
-import com.school.management.service.NoticeService;
 import com.school.management.service.SectionService;
 import com.school.management.service.StudentService;
 import com.school.management.service.SubjectService;
@@ -40,8 +45,8 @@ public class AdminController {
 	@Autowired
 	private StudentService studentService;
 
-	@Autowired
-	private NoticeService noticeService;
+//	@Autowired
+//	private NoticeService noticeService;
 
 	@Autowired
 	private TimetableService timetableService;
@@ -69,12 +74,24 @@ public class AdminController {
 
 	@Autowired
 	private AttendanceService attendanceService;
-	
+
 	@Autowired
 	private ExamService examService;
-	
+
 	@Autowired
 	private HomeworkService homeworkService;
+
+	@Autowired
+	private DashboardService dashboardService;
+
+	@Autowired
+	private ContactMessageService contactMessageService;
+
+	@Autowired
+	private ActivityLogService activityLogService;
+	
+	@Autowired
+	private HolidayService holidayService;
 
 	@GetMapping("/admin/dashboard")
 	public String adminDashboard(Model model) {
@@ -96,6 +113,14 @@ public class AdminController {
 		model.addAttribute("totalExams", examService.getAllExams().size());
 
 		model.addAttribute("totalHomework", homeworkService.getAll().size());
+
+		model.addAttribute("monthlyFees", feeService.getTotalCollectedFees());
+
+		model.addAttribute("pendingFees", feeService.getTotalPendingFees());
+
+		model.addAttribute("presentCount", attendanceService.presentCount());
+
+		model.addAttribute("absentCount", attendanceService.absentCount());
 
 		return "admin/dashboard";
 	}
@@ -313,5 +338,76 @@ public class AdminController {
 						LocalDate.parse(endDate)));
 
 		return "admin/fee-report";
+	}
+
+	@GetMapping("/admin/dashboard-data")
+	@ResponseBody
+	public DashboardDTO dashboardData() {
+
+		return dashboardService.getDashboardData();
+	}
+
+	@GetMapping("/admin/messages")
+	public String contactMessages(Model model) {
+
+		model.addAttribute("messages", contactMessageService.findAll());
+
+		return "admin/contact-messages";
+	}
+
+	@GetMapping("/admin/message/read/{id}")
+	public String markAsRead(@PathVariable Long id) {
+
+		contactMessageService.markAsRead(id);
+
+		return "redirect:/admin/messages";
+	}
+
+	@GetMapping("/admin/message/delete/{id}")
+	public String deleteMessage(@PathVariable Long id) {
+
+		contactMessageService.delete(id);
+
+		return "redirect:/admin/messages";
+	}
+
+	@GetMapping("/admin/reports")
+	public String reports(Model model) {
+
+		model.addAttribute("totalStudents", studentService.countStudents());
+
+		model.addAttribute("totalTeachers", teacherService.countTeachers());
+
+		model.addAttribute("totalClasses", classRoomService.countClasses());
+
+		model.addAttribute("totalSubjects", subjectService.countSubjects());
+
+		model.addAttribute("totalExams", examService.getAllExams().size());
+
+		model.addAttribute("presentCount", attendanceService.presentCount());
+
+		model.addAttribute("absentCount", attendanceService.absentCount());
+
+		model.addAttribute("totalCollection", feeService.totalCollection());
+
+		model.addAttribute("pendingFees", feeService.getTotalPendingFees());
+
+		return "admin/reports";
+	}
+
+	@GetMapping("/admin/activity-log")
+	public String activityLog(Model model) {
+
+		model.addAttribute("logs", activityLogService.latestLogs());
+
+		return "admin/activity-log";
+	}
+
+	@GetMapping("/admin/holidays")
+	public String holidays(Model model) {
+
+		model.addAttribute("holidays", holidayService.getUpcomingHolidays());
+
+		return "admin/holidays";
 	}
 }

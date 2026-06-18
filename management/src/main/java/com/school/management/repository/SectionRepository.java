@@ -11,4 +11,6 @@ public interface SectionRepository extends JpaRepository<Section, Long> {
 
 	List<Section> findByClassRoom(ClassRoom classRoom);
 
+	boolean existsBySectionName(String sectionName);
+
 }

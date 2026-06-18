@@ -1,5 +1,6 @@
 package com.school.management.service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
@@ -42,4 +43,22 @@ public class ExamService {
 		return repository.existsByExamNameAndClassNameAndSectionAndSubject(exam.getExamName(), exam.getClassName(),
 				exam.getSection(), exam.getSubject());
 	}
+
+	public Exam getById(Long id) {
+		return repository.findById(id).orElse(null);
+	}
+
+	public List<Exam> getAll() {
+		return repository.findAll();
+	}
+
+	public void delete(Long id) {
+		repository.deleteById(id);
+	}
+
+	public List<Exam> upcomingExams() {
+
+		return repository.findTop5ByExamDateGreaterThanEqualOrderByExamDateAsc(LocalDate.now().toString());
+	}
+
 }

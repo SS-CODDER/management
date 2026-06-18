@@ -31,7 +31,7 @@ public class SectionService {
 
 	public boolean existsBySectionName(String sectionName) {
 		// TODO Auto-generated method stub
-		 return (Boolean) null;
+		 return  repository.existsBySectionName(sectionName);
                
 	}
 }

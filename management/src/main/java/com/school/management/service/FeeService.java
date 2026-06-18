@@ -56,6 +56,11 @@ public class FeeService {
 		return repository.findById(id).orElse(null);
 	}
 
+	public Double getTotalCollectedFees() {
+
+		return repository.sumCollectedFees();
+	}
+
 	public void deleteFee(Long id) {
 		repository.deleteById(id);
 	}
@@ -96,6 +101,33 @@ public class FeeService {
 	public List<Fee> getFeesBetweenDates(LocalDate start, LocalDate end) {
 
 		return repository.findByPaymentDateBetween(start, end);
+	}
+
+	public Double getTotalPendingFees() {
+
+		return repository.findAll().stream().mapToDouble(Fee::getDueAmount).sum();
+	}
+
+	public Double getMonthCollection(String month) {
+
+		Double amount = repository.getMonthCollection(month);
+
+		return amount == null ? 0.0 : amount;
+	}
+
+	public Double getMonthCollection(int month) {
+		return repository.getMonthCollection1(month);
+	}
+
+	public List<Fee> recentFees() {
+
+		return repository.findTop5ByOrderByPaymentDateDesc();
+	}
+	
+
+	public List<Fee> getDefaulters(){
+
+	    return repository.findDefaulters();
 	}
 
 }

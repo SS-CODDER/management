@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+<title>Activity Log</title>
+
+<link rel="stylesheet"
+      th:href="@{/css/bootstrap.min.css}">
+
+</head>
+
+<body>
+
+<div class="container mt-4">
+
+<h2>📋 Activity Log</h2>
+
+<div class="card shadow">
+
+<div class="card-body">
+
+<table
+class="table table-hover">
+
+<thead>
+
+<tr>
+
+<th>Activity</th>
+<th>User</th>
+<th>Date Time</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr
+th:each="log : ${logs}">
+
+<td th:text="${log.activity}"></td>
+
+<td th:text="${log.performedBy}"></td>
+
+<td th:text="${log.activityTime}"></td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>

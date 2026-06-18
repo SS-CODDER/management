@@ -35,4 +35,10 @@ public class Result {
     private String remarks;
 
     private LocalDate examDate;
+    
+    private String className;
+
+    private String section;
+
+    private Integer examYear;
 }

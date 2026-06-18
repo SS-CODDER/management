@@ -27,4 +27,11 @@ public class Exam {
 	private String endTime;
 
 	private String roomNo;
+	
+	private Integer maxMarks;
+
+	private Integer passMarks;
+
+	private Integer examYear;
+	
 }

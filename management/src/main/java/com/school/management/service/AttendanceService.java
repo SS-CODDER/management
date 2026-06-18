@@ -36,6 +36,16 @@ public class AttendanceService {
 		return repository.findByStudent_Id(studentId);
 	}
 
+	public long presentCount() {
+
+		return repository.countByStatus("Present");
+	}
+
+	public long absentCount() {
+
+		return repository.countByStatus("Absent");
+	}
+
 	public List<Attendance> getAttendanceReport(String className, String section, LocalDate date) {
 
 		return repository.findByStudent_ClassNameAndStudent_SectionAndAttendanceDate(className, section, date);

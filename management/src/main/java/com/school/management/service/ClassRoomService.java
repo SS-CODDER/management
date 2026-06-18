@@ -2,6 +2,7 @@ package com.school.management.service;
 
 import java.util.List;
 
+import org.jspecify.annotations.Nullable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -30,5 +31,10 @@ public class ClassRoomService {
 	public boolean existsByClassName(String className) {
 		
 		return false;
+	}
+
+	public long countClasses() {
+		// TODO Auto-generated method stub
+		return repository.findAll().size();
 	}
 }

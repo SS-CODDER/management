@@ -35,9 +35,6 @@ import com.school.management.service.TimetableService;
 public class StudentController {
 
 	@Autowired
-	private AttendanceService service;
-
-	@Autowired
 	private ResultService resultService;
 
 	@Autowired
@@ -95,6 +92,14 @@ public class StudentController {
 
 					results.get(results.size() - 1).getGrade());
 		}
+
+		model.addAttribute("student", student);
+
+		model.addAttribute("upcomingExams",
+				examService.getClassExams(student.getClassName(), student.getSection()).size());
+
+		model.addAttribute("homeworkCount",
+				homeworkService.getClassHomework(student.getClassName(), student.getSection()).size());
 
 		model.addAttribute("latestNotice",
 

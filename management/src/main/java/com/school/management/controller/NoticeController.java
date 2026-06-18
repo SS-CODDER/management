@@ -4,7 +4,9 @@ import java.time.LocalDate;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -50,4 +52,19 @@ public class NoticeController {
 		return "redirect:/admin/dashboard";
 	}
 
+	@GetMapping("/admin/notices")
+	public String notices(Model model) {
+
+		model.addAttribute("notices", noticeService.getAllNotices());
+
+		return "admin/notices";
+	}
+
+	@GetMapping("/admin/delete-notice/{id}")
+	public String deleteNotice(@PathVariable Long id) {
+
+		noticeService.deleteNotice(id);
+
+		return "redirect:/admin/notices";
+	}
 }

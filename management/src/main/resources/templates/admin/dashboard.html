@@ -33,146 +33,208 @@
 
     <!-- CARDS -->
 
-    <div class="row cards g-4">
+	<div class="container-fluid">
 
-      
-		<div class="col-md-3">
+	    <!-- Quick Actions -->
 
-		            <div class="dashboard-card">
-		<a th:href="@{/admin/classes}"
-		   class="btn btn-primary">
+	    <div class="row g-4 mb-4">
 
-		    Manage Classes
+	        <div class="col-md-3">
+	            <a th:href="@{/admin/classes}"
+	               class="btn btn-primary w-100 p-4">
+	                Manage Classes
+	            </a>
+	        </div>
 
-		</a>
-		
-		</div>
+	        <div class="col-md-3">
+	            <a th:href="@{/admin/sections}"
+	               class="btn btn-success w-100 p-4">
+	                Manage Sections
+	            </a>
+	        </div>
 
-		       </div>
+	        <div class="col-md-3">
+	            <a th:href="@{/admin/subjects}"
+	               class="btn btn-warning w-100 p-4">
+	                Manage Subjects
+	            </a>
+	        </div>
 
-			   <div class="col-md-3">
+	        <div class="col-md-3">
+	            <a th:href="@{/admin/exams}"
+	               class="btn btn-info w-100 p-4">
+	                Manage Exams
+	            </a>
+	        </div>
 
-			   		            <div class="dashboard-card">
-		<a th:href="@{/admin/sections}"
-		   class="btn btn-success">
+	    </div>
 
-		    Manage Sections
+	    <!-- Statistics -->
 
-		</a>
-		</div>
+	    <div class="row g-4">
 
-		     </div>
-		
-		<div class="col-md-3">
+	        <div class="col-md-3">
+	            <div class="card shadow border-0 bg-primary text-white">
+	                <div class="card-body text-center">
+	                    <h1>👨‍🎓</h1>
+	                    <h2 th:text="${totalStudents}">0</h2>
+	                    <h5>Total Students</h5>
+	                </div>
+	            </div>
+	        </div>
 
-				            <div class="dashboard-card">
-		<a th:href="@{/admin/subjects}"
-		   class="btn btn-warning">
+	        <div class="col-md-3">
+	            <div class="card shadow border-0 bg-success text-white">
+	                <div class="card-body text-center">
+	                    <h1>👨‍🏫</h1>
+	                    <h2 th:text="${totalTeachers}">0</h2>
+	                    <h5>Total Teachers</h5>
+	                </div>
+	            </div>
+	        </div>
 
-		    Manage Subjects
+	        <div class="col-md-3">
+	            <div class="card shadow border-0 bg-warning">
+	                <div class="card-body text-center">
+	                    <h1>🏫</h1>
+	                    <h2 th:text="${totalClasses}">0</h2>
+	                    <h5>Classes</h5>
+	                </div>
+	            </div>
+	        </div>
 
-		</a>
-		</div>
+	        <div class="col-md-3">
+	            <div class="card shadow border-0 bg-info text-white">
+	                <div class="card-body text-center">
+	                    <h1>📚</h1>
+	                    <h2 th:text="${totalSubjects}">0</h2>
+	                    <h5>Subjects</h5>
+	                </div>
+	            </div>
+	        </div>
 
-		     </div>
-		<div class="col-md-3">
+	    </div>
 
-				            <div class="dashboard-card">
-		<a th:href="@{/admin/assign-teacher}"
-		   class="btn btn-info">
+	    <!-- Fees Row -->
 
-		    Assign Teacher
+	    <div class="row g-4 mt-2">
 
-		</a>
-		</div>
+	        <div class="col-md-3">
+	            <div class="card shadow border-0 bg-danger text-white">
+	                <div class="card-body text-center">
+	                    <h1>💰</h1>
+	                    <h2 th:text="${monthlyFees}">0</h2>
+	                    <p>Fees Collection</p>
+	                </div>
+	            </div>
+	        </div>
 
-		     </div>
-			 
-			 <div class="col-md-3">
+	        <div class="col-md-3">
+	            <div class="card shadow border-0 bg-dark text-white">
+	                <div class="card-body text-center">
+	                    <h1>❌</h1>
+	                    <h2 th:text="${pendingFees}">0</h2>
+	                    <p>Pending Fees</p>
+	                </div>
+	            </div>
+	        </div>
 
-			           <div class="dashboard-card">
+	        <div class="col-md-3">
+	            <div class="card shadow border-0 bg-secondary text-white">
+	                <div class="card-body text-center">
+	                    <h1>📝</h1>
+	                    <h2 th:text="${totalExams}">0</h2>
+	                    <p>Total Exams</p>
+	                </div>
+	            </div>
+	        </div>
+			
+			<div class="col-md-3">
+				           <div class="card shadow border-0 bg-warning">
+				                <div class="card-body text-center">
+									<h1>💰</h1>
+					            <h2
+					            th:text="${defaulterCount}">0
+					            </h2>
 
-						<h2 th:text="${totalStudents}">
-					
-						</h2>
+					            <p>
 
-			               <p>Total Students</p>
+					                Fee Defaulters
 
-			           </div>
+					            </p>
 
-			       </div>
-        <div class="col-md-3">
+					        </div>
 
-            <div class="dashboard-card">
+					    </div>
 
-				<h2 th:text="${totalTeachers}">
-				</h2>
+					</div>
 
-                <p>Total Teachers</p>
+	    </div>
+
+<!-- Charts -->
+<div class="row g-4 mt-4">
+
+    <!-- Fees Chart -->
+    <div class="col-lg-4 col-md-12">
+        <div class="card shadow border-0 h-100">
+            <div class="card-header bg-success text-white">
+                Fees Collection
+            </div>
+            <div class="card-body">
+               <canvas id="feesChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <!-- Student Chart -->
+    <div class="col-lg-4 col-md-12">
+        <div class="card shadow border-0 h-100">
+            <div class="card-header bg-primary text-white">
+                Student Growth
+            </div>
+            <div class="card-body">
+                <canvas id="studentChart"></canvas>
+            </div>
+        </div>
+    </div>
+	
+    <!-- Attendance Chart -->
+    <div class="col-lg-4 col-md-12">
+        <div class="card shadow border-0 h-100">
+            <div class="card-header bg-warning">
+                Attendance
+            </div>
+            <div class="card-body">
+               <canvas id="attendanceChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<div class="row mt-4">
+
+    <!-- Recent Admissions -->
+
+    <div class="col-lg-4">
+
+        <div class="card shadow h-100">
+
+            <div class="card-header bg-primary text-white">
+
+                Recent Admissions
 
             </div>
 
-        </div>
+            <div class="card-body">
 
-        <div class="col-md-3">
+                <table class="table">
 
-            <div class="dashboard-card">
+                    <tbody id="recentStudents">
 
-				<h2 th:text="${totalClasses}">
-				</h2>
+                    </tbody>
 
-                <p>Classes</p>
-
-            </div>
-
-        </div>
-		<div class="col-md-3">
-
-		           <div class="dashboard-card">
-
-					<h2 th:text="${totalSubjects}">
-					</h2>
-
-		               <p>Subjects</p>
-
-		           </div>
-
-		       </div>
-			   <div class="col-md-3">
-
-			   	           <div class="dashboard-card">
-
-			   				<h2 th:text="${totalSections}">
-			   				</h2>
-
-			   	               <p>Sections</p>
-
-			   	           </div>
-
-			   	       </div>
-					   
-					   <div class="col-md-3">
-
-					   			   	           <div class="dashboard-card">
-
-					   			   				<h2 th:text="${totalExams}">
-					   			   				</h2>
-
-					   			   	               <p>Total Exams</p>
-
-					   			   	           </div>
-
-					   			   	       </div>
-										   
-        <div class="col-md-3">
-
-            <div class="dashboard-card">
-
-				<h2 th:text="${totalCollection}">
-				0
-				</h2>
-
-                <p>Fees Collection</p>
+                </table>
 
             </div>
 
@@ -180,12 +242,71 @@
 
     </div>
 
- 
+    <!-- Recent Fees -->
+
+    <div class="col-lg-4">
+
+        <div class="card shadow h-100">
+
+            <div class="card-header bg-success text-white">
+
+                Recent Fee Collection
+
+            </div>
+
+            <div class="card-body">
+
+                <table class="table">
+
+                    <tbody id="recentFees">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </div>
+		
+		
+
+    </div>
+
+    <!-- Upcoming Exams -->
+
+    <div class="col-lg-4">
+
+        <div class="card shadow h-100">
+
+            <div class="card-header bg-warning">
+
+                Upcoming Exams
+
+            </div>
+
+            <div class="card-body">
+
+                <ul id="upcomingExams">
+
+                </ul>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+	</div>
 
 </div>
 <div th:replace=
 	"fragments/footer :: footer">
 	</div>
+	
+	<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+	<script th:src="@{/js/dashboard-chart.js}"></script>
+
 
 </body>
 </html>

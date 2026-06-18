@@ -49,6 +49,8 @@ public class Student {
 
 	private String profileImage;
 	
+	private LocalDate admissionDate;
+	
 	@Transient
 	private String feeStatus;
 

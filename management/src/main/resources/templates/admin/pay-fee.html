@@ -98,13 +98,29 @@ rel="stylesheet">
 
 <div class="col-md-4 mb-3">
 
-<label>Month</label>
+	<select name="feeMonth"
+	        class="form-control">
 
-<input type="text"
-       name="feeMonth"
-       class="form-control"
-       th:value="${fee.feeMonth}"
-       readonly>
+	<option value="January">January</option>
+	<option value="February">February</option>
+	<option value="March">March</option>
+	<option value="April">April</option>
+	<option value="May">May</option>
+	<option value="June">June</option>
+	<option value="July">July</option>
+	<option value="August">August</option>
+	<option value="September">September</option>
+	<option value="October">October</option>
+	<option value="November">November</option>
+	<option value="December">December</option>
+
+	</select>
+
+<!--<input type="text"-->
+<!--       name="feeMonth"-->
+<!--       class="form-control"-->
+<!--       th:value="${fee.feeMonth}"-->
+<!--       readonly>-->
 
 </div>
 
@@ -219,7 +235,44 @@ Back
 </div>
 
 </div>
+<script>
+	document
+	.getElementById("feeMonth")
+	.addEventListener("change", function(){
 
+	fetch(
+	"/admin/check-fee?studentId="
+	+
+	studentId
+	+
+	"&month="
+	+
+	this.value
+	+
+	"&year="
+	+
+	year
+	)
+
+	.then(res=>res.json())
+
+	.then(data=>{
+
+	if(data){
+
+	alert(
+	"Fee already submitted");
+
+	document
+	.getElementById("submitBtn")
+	.disabled = true;
+
+	}
+
+	});
+
+	});
+</script>
 </body>
 
 </html>

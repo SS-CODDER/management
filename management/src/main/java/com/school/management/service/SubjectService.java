@@ -2,6 +2,7 @@ package com.school.management.service;
 
 import java.util.List;
 
+import org.jspecify.annotations.Nullable;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,5 +36,10 @@ public class SubjectService {
 	public Subject getById(Long subjectId) {
 
 		return repository.findById(subjectId).orElse(null);
+	}
+
+	public Long countSubjects() {
+		// TODO Auto-generated method stub
+		return repository.count();
 	}
 }

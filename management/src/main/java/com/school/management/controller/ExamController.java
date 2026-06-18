@@ -20,6 +20,7 @@ public class ExamController {
 	@Autowired
 	private ExamService examService;
 
+	@Autowired
 	private ClassRoomService classRoomService;
 
 	@Autowired

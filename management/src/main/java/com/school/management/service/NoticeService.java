@@ -44,4 +44,10 @@ public class NoticeService {
 
 				.toList();
 	}
+	
+	public void deleteNotice(Long id){
+
+	    repository.deleteById(id);
+
+	}
 }

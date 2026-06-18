@@ -1,7 +1,9 @@
 package com.school.management.controller;
 
 import java.time.LocalDate;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -60,6 +62,17 @@ public class FeeController {
 		model.addAttribute("className", className);
 
 		model.addAttribute("section", section);
+
+		Map<Long, String> feeStatus = new HashMap<>();
+
+//		for (Student s : students) {
+//
+//			boolean paid = feeService.isFeePaid(s, currentMonth, currentYear);
+//
+//			feeStatus.put(s.getId(), paid ? "PAID" : "PENDING");
+//		}
+
+		model.addAttribute("feeStatus", feeStatus);
 
 		return "admin/fee-students";
 	}
@@ -125,6 +138,29 @@ public class FeeController {
 		return "redirect:/admin/fees";
 	}
 
-	
-	
+	@GetMapping("/admin/fee-defaulters")
+	public String feeDefaulters(Model model) {
+
+		model.addAttribute("defaulters", feeService.getDefaulters());
+
+		return "admin/fee-defaulters";
+	}
+
+//	@GetMapping("/admin/check-fee")
+//	@ResponseBody
+//	public boolean checkFee(
+//	        Long studentId,
+//	        String month,
+//	        Integer year){
+//
+//	    Student student =
+//	            studentService
+//	                    .getStudentById(studentId);
+//
+//	    return feeService.isFeePaid(
+//	            student,
+//	            month,
+//	            year);
+//	}
+
 }

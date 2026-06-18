@@ -84,6 +84,12 @@ public class TeacherController {
 
 		model.addAttribute("todayAttendance", attendanceRepository.count());
 
+		model.addAttribute("teacher", teacher);
+
+		model.addAttribute("upcomingExams", examService.getAllExams().size());
+
+		model.addAttribute("homeworkCount", homeworkService.getAll().size());
+
 		return "teacher/dashboard";
 	}
 
@@ -137,6 +143,11 @@ public class TeacherController {
 		result.setStatus(resultService.calculateStatus(percentage));
 
 		result.setRemarks(remarks);
+
+		if (resultService.resultExists(studentId, subject.getId())) {
+
+			return "redirect:/teacher/result-form?error=Result Already Exists";
+		}
 
 		resultService.saveResult(result);
 

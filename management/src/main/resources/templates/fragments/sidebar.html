@@ -8,60 +8,218 @@
     <div class="sidebar">
 
         <div class="logo">
-            EduManage
+            🎓 EduManage
         </div>
 
-		<ul>
+        <ul>
 
-		    <li class="bi bi-speedometer2"><a th:href="@{/admin/dashboard}">Dashboard</a></li>
+            <li>
+                <a th:href="@{/admin/dashboard}">
+                    📊 Dashboard
+                </a>
+            </li>
 
-		    <!-- Students -->
-		    <li class="menu-item">
-		        <a href="#">Students ▼</a>
+            <!-- STUDENTS -->
 
-		        <ul class="submenu">
-		            <li><a th:href="@{/admin/students}">All Students</a></li>
-		            <li><a th:href="@{/admin/student-registration}">Add Student</a></li>
-		            <li><a th:href="@{/admin/attendance}">Attendance</a></li>
-		            <li><a th:href="@{/admin/results}">Results</a></li>
-		        </ul>
-		    </li>
+            <li class="menu-item">
 
-		    <!-- Teachers -->
-		    <li class="menu-item">
-		        <a href="#">Teachers ▼</a>
+                <a href="#">
+                    👨‍🎓 Students ▼
+                </a>
 
-		        <ul class="submenu">
-		            <li><a th:href="@{/admin/teachers}">All Teachers</a></li>
-		            <li><a th:href="@{/admin/assign-teacher}">Assign Teacher</a></li>
-		        </ul>
-		    </li>
+                <ul class="submenu">
 
-		    <!-- Academic -->
-		    <li class="menu-item">
-		        <a href="#">Academic ▼</a>
+                    <li>
+                        <a th:href="@{/admin/students}">
+                            All Students
+                        </a>
+                    </li>
 
-		        <ul class="submenu">
-		            <li><a th:href="@{/admin/classes}">Classes</a></li>
-		            <li><a th:href="@{/admin/sections}">Sections</a></li>
-		            <li><a th:href="@{/admin/subjects}">Subjects</a></li>
-		        </ul>
-		    </li>
+                    <li>
+                        <a th:href="@{/admin/add-student}">
+                            Add Student
+                        </a>
+                    </li>
 
-		    <!-- Fees -->
-		    <li class="menu-item">
-		        <a href="#">Fees ▼</a>
+                    <li>
+                        <a th:href="@{/admin/attendance}">
+                            Attendance
+                        </a>
+                    </li>
 
-		        <ul class="submenu">
-		            <li><a th:href="@{/admin/fees}">Collect Fees</a></li>
-		            <li><a th:href="@{/admin/fee-report}">Fee Reports</a></li>
-		        </ul>
-		    </li>
+                    <li>
+                        <a th:href="@{/admin/results}">
+                            Results
+                        </a>
+                    </li>
 
-		    <li><a th:href="@{/admin/add-timetable}">Timetable</a></li>
-		    <li><a th:href="@{/admin/add-notice}">Notice</a></li>
+                </ul>
 
-		</ul>
+            </li>
+
+            <!-- TEACHERS -->
+
+            <li class="menu-item">
+
+                <a href="#">
+                    👨‍🏫 Teachers ▼
+                </a>
+
+                <ul class="submenu">
+
+                    <li>
+                        <a th:href="@{/admin/teachers}">
+                            All Teachers
+                        </a>
+                    </li>
+
+                    <li>
+                        <a th:href="@{/admin/add-teacher}">
+                            Add Teacher
+                        </a>
+                    </li>
+
+                    <li>
+                        <a th:href="@{/admin/assign-teacher}">
+                            Assign Teacher
+                        </a>
+                    </li>
+
+                </ul>
+
+            </li>
+
+            <!-- ACADEMIC -->
+
+            <li class="menu-item">
+
+                <a href="#">
+                    📚 Academic ▼
+                </a>
+
+                <ul class="submenu">
+
+                    <li>
+                        <a th:href="@{/admin/classes}">
+                            Classes
+                        </a>
+                    </li>
+
+                    <li>
+                        <a th:href="@{/admin/sections}">
+                            Sections
+                        </a>
+                    </li>
+
+                    <li>
+                        <a th:href="@{/admin/subjects}">
+                            Subjects
+                        </a>
+                    </li>
+
+                </ul>
+
+            </li>
+
+            <!-- FEES -->
+
+            <li class="menu-item">
+
+                <a href="#">
+                    💰 Fees ▼
+                </a>
+
+                <ul class="submenu">
+
+                    <li>
+                        <a th:href="@{/admin/fees}">
+                            Collect Fees
+                        </a>
+                    </li>
+
+                    <li>
+                        <a th:href="@{/admin/fee-report}">
+                            Fee Reports
+                        </a>
+                    </li>
+					
+					<li>
+
+					    <a th:href="@{/admin/fee-defaulters}">
+
+					        🚨 Fee Defaulters
+
+					    </a>
+
+					</li>
+
+                </ul>
+
+            </li>
+
+            <!-- EXAMS -->
+
+            <li class="menu-item">
+
+                <a href="#">
+                    📝 Exams ▼
+                </a>
+
+                <ul class="submenu">
+
+                    <li>
+                        <a th:href="@{/admin/exams}">
+                            All Exams
+                        </a>
+                    </li>
+
+                    <li>
+                        <a th:href="@{/admin/add-exam}">
+                            Add Exam
+                        </a>
+                    </li>
+
+                </ul>
+
+            </li>
+
+            <li>
+                <a th:href="@{/admin/add-timetable}">
+                    🗓 Timetable
+                </a>
+            </li>
+
+            <li>
+                <a th:href="@{/admin/notices}">
+                    📢 Notices
+                </a>
+            </li>
+			
+			<li>
+			    <a th:href="@{/admin/holidays}">
+			        📅 Holiday Calendar
+			    </a>
+			</li>
+			<li>
+
+			<a href="/admin/messages">
+
+			📩 Contact Messages
+
+			</a>
+
+			</li>
+			<li>
+
+			    <a href="/admin/reports">
+
+			        📊 Reports
+
+			    </a>
+
+			</li>
+
+        </ul>
 
     </div>
 

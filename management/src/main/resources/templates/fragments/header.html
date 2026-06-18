@@ -9,36 +9,36 @@
 		<link rel="stylesheet" th:href="@{/css/layout.css}">
 		<link rel="stylesheet" th:href="@{/css/style.css}">
 	</head>
+	
+		<body>
 
-<body>
+		<div th:fragment="header(title)">
 
-<div th:fragment="header(title)">
+		    <div class="topbar">
 
-    <div class="topbar">
+		        <div>
+		            <h2 class="mb-0 fw-bold" th:text="${title}">
+		                Dashboard
+		            </h2>
+		        </div>
 
-        <h2 th:text="${title}">
-            Dashboard
-        </h2>
+		        <div class="d-flex gap-2">
 
-        <div>
+		            <a th:href="@{/admin/dashboard}"
+		               class="btn btn-primary">
+		                🏠 Home
+		            </a>
 
-            <a th:href="@{/admin/dashboard}" class="btn btn-primary">
+		            <a th:href="@{/}"
+		               class="btn btn-danger">
+		                🚪 Logout
+		            </a>
 
-                Home
+		        </div>
 
-            </a>
+		    </div>
 
-          <a th:href="@{/}" class="btn btn-danger">
+		</div>
 
-                Logout
-
-            </a>
-
-        </div>
-
-    </div>
-
-</div>
-
-</body>
+		</body>
 </html>

@@ -12,77 +12,65 @@ import com.school.management.service.CustomUserDetailsService;
 @Configuration
 public class SecurityConfig {
 
-    private final CustomUserDetailsService userDetailsService;
+	private final CustomUserDetailsService userDetailsService;
 
-    public SecurityConfig(
-            CustomUserDetailsService userDetailsService) {
+	public SecurityConfig(CustomUserDetailsService userDetailsService) {
 
-        this.userDetailsService = userDetailsService;
-    }
+		this.userDetailsService = userDetailsService;
+	}
 
-    @Bean
-    public PasswordEncoder passwordEncoder() {
+	@Bean
+	public PasswordEncoder passwordEncoder() {
 
-        return new BCryptPasswordEncoder();
-    }
+		return new BCryptPasswordEncoder();
+	}
 
-    @Bean
-    public SecurityFilterChain securityFilterChain(
-            HttpSecurity http)
-            throws Exception {
+	@Bean
+	public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
 
-        http
+		http
 
-                .authorizeHttpRequests(auth -> auth
+				.authorizeHttpRequests(auth -> auth
 
-                        .requestMatchers(
-                                "/",
-                                "/login",
-                                "/css/**",
-                                "/js/**",
-                                "/images/**")
-                        .permitAll()
+						.requestMatchers("/", "/login", "/contact", "/contact/save", "/css/**", "/js/**", "/images/**")
+						.permitAll()
 
-                        .requestMatchers("/admin/**")
-                        .hasAuthority("ROLE_ADMIN")
+						.requestMatchers("/admin/**").hasAuthority("ROLE_ADMIN")
 
-                        .requestMatchers("/teacher/**")
-                        .hasAuthority("ROLE_TEACHER")
+						.requestMatchers("/teacher/**").hasAuthority("ROLE_TEACHER")
 
-                        .requestMatchers("/student/**")
-                        .hasAuthority("ROLE_STUDENT")
+						.requestMatchers("/student/**").hasAuthority("ROLE_STUDENT")
 
-                        .anyRequest()
-                        .authenticated())
+						.anyRequest().authenticated())
 
-                .formLogin(form -> form
+				.formLogin(form -> form
 
-                        .loginPage("/login")
+						.loginPage("/login")
 
-                        .loginProcessingUrl("/login")
+						.loginProcessingUrl("/login")
 
-                        .defaultSuccessUrl("/dashboard", true)
+						.defaultSuccessUrl("/dashboard", true)
 
-                        .failureUrl("/login?error=true")
+						.failureUrl("/login?error=true")
 
-                        .permitAll())
+						.permitAll())
 
-                .logout(logout -> logout
+				.logout(logout -> logout
 
-                        .logoutUrl("/logout")
+						.logoutUrl("/logout")
 
-                        .logoutSuccessUrl("/login?logout")
+						.logoutSuccessUrl("/login?logout")
 
-                        .invalidateHttpSession(true)
+						.invalidateHttpSession(true)
 
-                        .deleteCookies("JSESSIONID")
+						.deleteCookies("JSESSIONID")
 
-                        .permitAll())
+						.permitAll())
 
-                .exceptionHandling(ex ->
+				.exceptionHandling(ex ->
 
-                ex.accessDeniedPage("/403"));
+				ex.accessDeniedPage("/403"));
 
-        return http.build();
-    }
+		return http.build();
+	}
 }

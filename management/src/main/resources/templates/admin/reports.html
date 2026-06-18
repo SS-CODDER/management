@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+
+    <title>Reports Dashboard</title>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1">
+
+    <link rel="stylesheet"
+          th:href="@{/css/bootstrap.min.css}">
+
+    <link rel="stylesheet"
+          th:href="@{/css/dashboard.css}">
+
+</head>
+
+<body>
+
+<div class="container-fluid py-4">
+
+    <!-- Header -->
+
+    <div class="card shadow border-0 mb-4">
+
+        <div class="card-body d-flex
+                    justify-content-between
+                    align-items-center">
+
+            <div>
+
+                <h2 class="fw-bold">
+
+                    📊 School Reports
+
+                </h2>
+
+                <p class="text-muted">
+
+                    Overview of school performance
+
+                </p>
+
+            </div>
+
+            <a href="/admin/dashboard"
+               class="btn btn-secondary">
+
+                ← Dashboard
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- Statistics -->
+
+    <div class="row g-4">
+
+        <div class="col-md-3">
+
+            <div class="card bg-primary text-white shadow">
+
+                <div class="card-body text-center">
+
+                    <h2 th:text="${totalStudents}">
+                        0
+                    </h2>
+
+                    <p>Total Students</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="card bg-success text-white shadow">
+
+                <div class="card-body text-center">
+
+                    <h2 th:text="${totalTeachers}">
+                        0
+                    </h2>
+
+                    <p>Total Teachers</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="card bg-warning shadow">
+
+                <div class="card-body text-center">
+
+                    <h2 th:text="${totalClasses}">
+                        0
+                    </h2>
+
+                    <p>Total Classes</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-3">
+
+            <div class="card bg-danger text-white shadow">
+
+                <div class="card-body text-center">
+
+                    <h2 th:text="${totalSubjects}">
+                        0
+                    </h2>
+
+                    <p>Total Subjects</p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Fees Report -->
+
+    <div class="card shadow border-0 mt-4">
+
+        <div class="card-header bg-success text-white">
+
+            Fee Collection Report
+
+        </div>
+
+        <div class="card-body">
+
+            <div class="row">
+
+                <div class="col-md-6">
+
+                    <h4>
+
+                        Total Collection
+
+                    </h4>
+
+                    <h2 class="text-success">
+
+                        ₹
+                        <span
+                        th:text="${totalCollection}">
+                        </span>
+
+                    </h2>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <h4>
+
+                        Pending Fees
+
+                    </h4>
+
+                    <h2 class="text-danger">
+
+                        ₹
+                        <span
+                        th:text="${pendingFees}">
+                        </span>
+
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Attendance Report -->
+
+    <div class="card shadow border-0 mt-4">
+
+        <div class="card-header bg-primary text-white">
+
+            Attendance Summary
+
+        </div>
+
+        <div class="card-body">
+
+            <div class="row">
+
+                <div class="col-md-6">
+
+                    <h4>
+
+                        Present Students
+
+                    </h4>
+
+                    <h2 class="text-success"
+                        th:text="${presentCount}">
+                    </h2>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <h4>
+
+                        Absent Students
+
+                    </h4>
+
+                    <h2 class="text-danger"
+                        th:text="${absentCount}">
+                    </h2>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Exam Report -->
+
+    <div class="card shadow border-0 mt-4">
+
+        <div class="card-header bg-warning">
+
+            Examination Summary
+
+        </div>
+
+        <div class="card-body">
+
+            <h3>
+
+                Total Exams Scheduled:
+
+                <span
+                th:text="${totalExams}">
+                </span>
+
+            </h3>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>
